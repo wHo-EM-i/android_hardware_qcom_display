@@ -1,3 +1,4 @@
+ifeq ($(call my-dir),$(call project-path-for,qcom-display))
 display-hals := \
     include\
     sdm/libs/utils\
@@ -18,3 +19,4 @@ endif
 display-hals += gralloc
 
 include $(call all-named-subdir-makefiles,$(display-hals))
+endif
