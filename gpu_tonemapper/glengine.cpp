@@ -337,7 +337,7 @@ void checkGlError(const char *file, int line)
         break;
     }
 
-    ALOGE("glError (%s) %s:%d\n", pError, file, line);
+    ALOGE("glError (0x%x) %s:%d\n", error, file, line);
   }
 }
 
