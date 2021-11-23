@@ -1,5 +1,3 @@
-ifneq ($(filter 4.14, $(SOMC_KERNEL_VERSION)),)
-
 display-hals := \
     include\
     sdm/libs/utils\
@@ -20,5 +18,3 @@ endif
 display-hals += gralloc
 
 include $(call all-named-subdir-makefiles,$(display-hals))
-
-endif #TARGET_DISABLE_DISPLAY
