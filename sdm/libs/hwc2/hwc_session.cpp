@@ -446,12 +446,11 @@ void HWCSession::GetCapabilities(struct hwc2_device *device, uint32_t *outCount,
   if (Debug::Get()->GetProperty(DISABLE_SKIP_VALIDATE_PROP, &value) == kErrorNone) {
     disable_skip_validate = (value == 1);
   }
-  uint32_t count = 1 + (disable_skip_validate ? 0 : 1);
+  uint32_t count = (disable_skip_validate ? 0 : 1);
 
   if (outCapabilities != nullptr && (*outCount >= count)) {
-    outCapabilities[0] = HWC2_CAPABILITY_SKIP_CLIENT_COLOR_TRANSFORM;
     if (!disable_skip_validate) {
-      outCapabilities[1] = HWC2_CAPABILITY_SKIP_VALIDATE;
+      outCapabilities[0] = HWC2_CAPABILITY_SKIP_VALIDATE;
     }
   }
   *outCount = count;
@@ -3240,9 +3239,8 @@ int32_t HWCSession::GetDisplayCapabilities(hwc2_device_t *device, hwc2_display_t
   } else {
     if (isBuiltin) {
       // TODO(user): Handle SKIP_CLIENT_COLOR_TRANSFORM based on DSPP availability
-      outCapabilities[0] = HWC2_DISPLAY_CAPABILITY_SKIP_CLIENT_COLOR_TRANSFORM;
-      outCapabilities[1] = HWC2_DISPLAY_CAPABILITY_DOZE;
-      *outNumCapabilities = 2;
+      outCapabilities[0] = HWC2_DISPLAY_CAPABILITY_DOZE;
+      *outNumCapabilities = 1;
     }
     return HWC2_ERROR_NONE;
   }
