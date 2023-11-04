@@ -210,9 +210,9 @@ struct private_handle_t : public native_handle_t {
         base_metadata(0),
         gpuaddr(0),
         reserved_size(0),
+        custom_content_md_reserved_size(0),
         linear_size(0),
-        ubwcp_format(format),
-        custom_content_md_reserved_size(0) {
+        ubwcp_format(format) {
     version = static_cast<int>(sizeof(native_handle));
     numInts = NumInts();
     numFds = kNumFds;
