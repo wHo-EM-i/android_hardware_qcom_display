@@ -85,6 +85,7 @@ int DeviceImpl::CreateInstance(ClientContext *intf) {
     android::status_t status = device_obj_->IDisplayConfig::registerAsService();
     // Unable to start Display Config 2.0 service. Fail Init.
     if (status != android::OK) {
+      delete device_obj_;
       device_obj_ = nullptr;
       return -1;
     }
