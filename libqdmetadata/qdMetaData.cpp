@@ -315,6 +315,9 @@ int setMetaDataVa(MetaData_t *data, DispParamType paramType,
         case SET_VIDEO_HISTOGRAM_STATS:
           data->video_histogram_stats.stat_len = 0;
           break;
+        case LINEAR_FORMAT:
+          data->linearFormat = 0;
+          break;
         default:
           ALOGE("Unknown paramType %d", paramType);
           break;
